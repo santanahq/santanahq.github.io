@@ -6,27 +6,19 @@
     ":semanticCommitTypeAll(chore)",
     ":dependencyDashboard"
   ],
-  "labels": [
-    "dependencies"
-  ],
+  "labels": ["dependencies"],
   "rangeStrategy": "replace",
   "packageRules": [
     {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
+      "matchDepTypes": ["devDependencies"],
       "groupName": "development dependencies"
     },
     {
-      "matchDepTypes": [
-        "dependencies"
-      ],
+      "matchDepTypes": ["dependencies"],
       "groupName": "production dependencies"
     },
     {
-      "matchManagers": [
-        "github-actions"
-      ],
+      "matchManagers": ["github-actions"],
       "groupName": "github actions"
     }
   ]

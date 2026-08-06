@@ -1,5 +1,16 @@
 // @ts-check
-import { defineConfig } from "astro/config";
 
-// https://astro.build/config
-export default defineConfig({});
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
+import icon from "astro-icon";
+
+export default defineConfig({
+	site: "https://santanahq.github.io",
+	vite: {
+		plugins: [tailwindcss()],
+	},
+
+	integrations: [sitemap(), mdx(), icon()],
+});
