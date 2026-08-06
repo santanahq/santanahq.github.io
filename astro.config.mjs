@@ -7,10 +7,10 @@ import { defineConfig } from "astro/config";
 import icon from "astro-icon";
 
 export default defineConfig({
-	site: "https://santanahq.github.io",
-	vite: {
-		plugins: [tailwindcss()],
-	},
+  site: "https://santanahq.github.io",
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
-	integrations: [sitemap(), mdx(), icon()],
+  integrations: [sitemap(), mdx(), icon()],
 });
