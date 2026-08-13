@@ -1,9 +1,10 @@
 import rss from "@astrojs/rss";
 
-export async function GET(context) {
+export function GET() {
   return rss({
-    title: "Labs",
-    description: "Community research",
-    site: context.site,
+    title: "Santana Labs",
+    description: "A community for research, experimentation and open documentation.",
+    site: "https://santanahq.github.io",
+    items: [],
   });
 }
