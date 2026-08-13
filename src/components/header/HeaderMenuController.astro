@@ -1,0 +1,30 @@
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-nav");
+
+  const menuIcon = toggle?.querySelector("[data-menu-icon]");
+  const closeIcon = toggle?.querySelector("[data-close-icon]");
+
+  function setMenuOpen(isOpen: boolean) {
+    menu?.classList.toggle("hidden", !isOpen);
+
+    toggle?.setAttribute("aria-expanded", String(isOpen));
+    toggle?.setAttribute(
+      "aria-label",
+      isOpen ? "Cerrar navegación" : "Abrir navegación",
+    );
+
+    menuIcon?.classList.toggle("hidden", isOpen);
+    closeIcon?.classList.toggle("hidden", !isOpen);
+  }
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = menu?.classList.contains("hidden") ?? true;
+
+    setMenuOpen(isOpen);
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenuOpen(false));
+  });
+</script>

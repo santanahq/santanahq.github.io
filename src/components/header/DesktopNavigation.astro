@@ -1,0 +1,25 @@
+---
+import type { HeaderNavigationItem } from "./header-navigation";
+
+interface Props {
+  items: HeaderNavigationItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav
+  class="ml-10 hidden items-center gap-8 xl:flex"
+  aria-label="Navegación principal"
+>
+  {
+    items.map((item) => (
+      <a
+        href={item.href}
+        class="relative py-2 font-mono text-sm font-bold uppercase tracking-widest text-lab-ink transition-opacity duration-200 hover:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lab-ink focus-visible:ring-offset-2 focus-visible:ring-offset-lab-paper"
+      >
+        {item.label}
+      </a>
+    ))
+  }
+</nav>
