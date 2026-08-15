@@ -1,0 +1,37 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="flex items-center gap-2 md:justify-end">
+  <a
+    href="/newsletter"
+    aria-label="Newsletter"
+    class="grid size-9 place-items-center border border-neutral-300 text-black transition-colors duration-200 hover:border-black hover:bg-black hover:text-white"
+  >
+    <Icon name="lucide:mail" class="size-4.25" aria-hidden="true" />
+  </a>
+
+  <a
+    href="/rss.xml"
+    aria-label="RSS feed"
+    class="grid size-9 place-items-center border border-neutral-300 text-black transition-colors duration-200 hover:border-black hover:bg-black hover:text-white"
+  >
+    <Icon name="lucide:rss" class="size-4.25" aria-hidden="true" />
+  </a>
+
+  <a
+    href="/join"
+    aria-label="Join the lab"
+    class="group relative ml-2 inline-flex items-center gap-2 overflow-hidden border border-black px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-wide text-black"
+  >
+    <span
+      class="absolute inset-0 -translate-x-full bg-black transition-transform duration-300 ease-out group-hover:translate-x-0"
+    ></span>
+    <span class="relative transition-colors duration-300 group-hover:text-white"
+      >Join the lab</span
+    >
+    <span class="relative transition-colors duration-300 group-hover:text-white"
+      >↗</span
+    >
+  </a>
+</div>

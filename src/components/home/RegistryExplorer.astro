@@ -1,0 +1,109 @@
+---
+import { labIndexEntries } from "./registry-explorer";
+---
+
+<div class="relative mx-auto mt-10 inline-block text-left" data-menu>
+  <button
+    type="button"
+    data-menu-trigger
+    aria-expanded="false"
+    aria-controls="registry-menu"
+    class="inline-flex items-center gap-3 border border-neutral-300 bg-white px-6 py-4 text-neutral-950 transition-colors duration-150 hover:border-blue-700 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+  >
+    <span>Explore the registry</span>
+
+    <svg
+      data-menu-chevron
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      aria-hidden="true"
+      class="size-4 transition-transform duration-200"
+    >
+      <path d="m6 9 6 6 6-6"></path>
+    </svg>
+  </button>
+
+  <nav
+    id="registry-menu"
+    data-menu-panel
+    aria-label="Santana Labs table of contents"
+    aria-hidden="true"
+    inert
+    class="pointer-events-none invisible absolute left-0 top-full z-20 mt-3 min-w-full translate-y-1 border border-neutral-300 bg-white opacity-0 transition duration-200"
+  >
+    {
+      labIndexEntries.map((entry) => (
+        <a
+          href={entry.href}
+          class="group/item flex items-center justify-between border-t border-neutral-200 px-5 py-4 text-neutral-950 transition-colors duration-150 first:border-t-0 hover:bg-neutral-50"
+        >
+          <span class="font-mono text-xs font-bold uppercase tracking-widest transition-transform duration-150 group-hover/item:translate-x-1">
+            {entry.label}
+          </span>
+
+          <span
+            aria-hidden="true"
+            class="size-1.5 rounded-full bg-transparent transition-colors duration-150 group-hover/item:bg-blue-700"
+          />
+        </a>
+      ))
+    }
+  </nav>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-menu]").forEach((menu) => {
+    const triggerElement = menu.querySelector<HTMLButtonElement>(
+      "[data-menu-trigger]",
+    );
+    const panelElement = menu.querySelector<HTMLElement>("[data-menu-panel]");
+    const chevronElement = menu.querySelector<SVGElement>(
+      "[data-menu-chevron]",
+    );
+
+    if (
+      triggerElement === null ||
+      panelElement === null ||
+      chevronElement === null
+    ) {
+      return;
+    }
+
+    const trigger = triggerElement;
+    const panel = panelElement;
+    const chevron = chevronElement;
+
+    function setOpen(isOpen: boolean) {
+      trigger.setAttribute("aria-expanded", String(isOpen));
+      panel.setAttribute("aria-hidden", String(!isOpen));
+      panel.toggleAttribute("inert", !isOpen);
+
+      panel.classList.toggle("pointer-events-none", !isOpen);
+      panel.classList.toggle("invisible", !isOpen);
+      panel.classList.toggle("translate-y-1", !isOpen);
+      panel.classList.toggle("opacity-0", !isOpen);
+
+      chevron.classList.toggle("rotate-180", isOpen);
+    }
+
+    trigger.addEventListener("click", () => {
+      const isOpen = trigger.getAttribute("aria-expanded") === "true";
+      setOpen(!isOpen);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!menu.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        trigger.focus();
+      }
+    });
+  });
+</script>

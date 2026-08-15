@@ -1,0 +1,44 @@
+---
+interface Props {
+  protocol: string;
+  title: string;
+  description: string;
+  rulesCount: number;
+}
+
+const { protocol, title, description, rulesCount } = Astro.props;
+---
+
+<section class="px-6 pb-8 pt-12 sm:px-12 sm:pb-10 sm:pt-16">
+  <div class="mx-auto max-w-3xl">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="size-2 bg-black"></span>
+
+        <span
+          class="font-mono text-xs font-bold uppercase tracking-widest text-black"
+        >
+          Protocolo 01
+        </span>
+      </div>
+
+      <span
+        class="font-mono text-xs font-bold uppercase tracking-widest text-neutral-400"
+      >
+        {rulesCount} reglas
+      </span>
+    </div>
+
+    <h1
+      class="mt-7 max-w-xl font-mono text-4xl font-black uppercase leading-none tracking-tight sm:text-5xl"
+    >
+      {title}
+    </h1>
+
+    <p
+      class="mt-6 max-w-xl text-base leading-relaxed text-neutral-600 sm:text-lg"
+    >
+      {description}
+    </p>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+---
+import FooterActions from "./FooterActions.astro";
+import FooterBrand from "./FooterBrand.astro";
+import FooterNavigation from "./FooterNavigation.astro";
+---
+
+<footer class="bg-white text-black">
+  <div
+    class="mx-auto grid min-h-31 max-w-6xl grid-cols-1 items-center gap-6 px-5 py-6 lg:grid-cols-[1fr_auto_1fr] lg:px-8"
+  >
+    <FooterBrand />
+    <FooterNavigation />
+    <FooterActions />
+  </div>
+</footer>

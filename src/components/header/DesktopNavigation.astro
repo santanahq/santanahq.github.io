@@ -10,13 +10,13 @@ const { items } = Astro.props;
 
 <nav
   class="ml-10 hidden items-center gap-8 xl:flex"
-  aria-label="Navegación principal"
+  aria-label="Main navigation"
 >
   {
     items.map((item) => (
       <a
         href={item.href}
-        class="relative py-2 font-mono text-sm font-bold uppercase tracking-widest text-lab-ink transition-opacity duration-200 hover:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lab-ink focus-visible:ring-offset-2 focus-visible:ring-offset-lab-paper"
+        class="relative py-2 font-mono text-sm font-bold uppercase tracking-widest text-black transition-opacity duration-200 hover:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white"
       >
         {item.label}
       </a>

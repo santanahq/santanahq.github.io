@@ -9,9 +9,10 @@ import { headerNavigation } from "./header-navigation";
 ---
 
 <header
-  class="sticky top-0 z-50 border-b border-lab-line bg-lab-paper text-lab-ink"
+  id="site-header"
+  class="sticky top-0 z-50 bg-white text-black transition-shadow duration-200"
 >
-  <div class="relative flex h-18 items-center px-5 lg:px-8">
+  <div class="mx-auto flex h-18 max-w-6xl items-center px-5 lg:px-8">
     <div class="order-1 lg:order-2">
       <HeaderBrand />
     </div>
@@ -24,7 +25,7 @@ import { headerNavigation } from "./header-navigation";
       <HeaderNewsletter />
     </div>
 
-    <div class="order-2 ml-auto lg:order-1 lg:ml-0">
+    <div class="order-2 ml-auto lg:hidden">
       <MenuToggle />
     </div>
 

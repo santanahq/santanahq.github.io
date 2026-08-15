@@ -1,8 +1,9 @@
 ---
 import { SEO } from "astro-seo";
 import Header from "../components/header/Header.astro";
-
+import Footer from "../components/footer/Footer.astro";
 import "../styles/global.css";
+import DiscoveryCursor from "../components/DiscoveryCursor.astro";
 
 interface Props {
   title: string;
@@ -77,6 +78,10 @@ const socialImageURL = new URL(image, Astro.site);
   </head>
   <body>
     <Header />
-    <slot />
+    <main class="bg-zinc-100">
+      <slot />
+    </main>
+    <Footer />
+    <DiscoveryCursor />
   </body>
 </html>
