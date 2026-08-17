@@ -8,6 +8,10 @@ export const labIndexEntries = [
     href: "#ways-to-begin",
   },
   {
+    label: "The lab surface",
+    href: "#lab-surface",
+  },
+  {
     label: "Join the lab",
     href: "#join-the-lab",
   },
