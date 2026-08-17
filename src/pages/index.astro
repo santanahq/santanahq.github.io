@@ -1,11 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import CommunityInvitation from "../components/home/CommunityInvitation.astro";
 import HomeHero from "../components/home/HomeHero.astro";
+import StartHere from "../components/home/StartHere.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
-  title="Santana Labs"
-  description="A technical community for curious people."
+  title="Santana"
+  description="A space to research, experiment, and publish what we discover together."
 >
   <HomeHero />
+  <StartHere />
+  <CommunityInvitation />
 </Layout>

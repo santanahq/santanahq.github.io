@@ -1,0 +1,70 @@
+---
+import { startHereSteps } from "./start-here";
+---
+
+<section
+  aria-labelledby="start-here-title"
+  class="border-b border-neutral-950 bg-white px-6 py-16 text-neutral-950 sm:py-20"
+>
+  <div class="mx-auto max-w-3xl">
+    <h2 id="start-here-title" class="sr-only">Start here</h2>
+
+    <ol class="list-none pl-0">
+      {
+        startHereSteps.map((step, index) => (
+          <li class="group grid grid-cols-[3.5rem_minmax(0,1fr)] gap-5 sm:grid-cols-[5.5rem_minmax(0,1fr)] sm:gap-8">
+            <div class="flex flex-col items-center">
+              <span
+                aria-hidden="true"
+                class:list={[
+                  "flex size-11 shrink-0 items-center justify-center rounded-full font-mono text-sm font-bold text-white transition-transform duration-200 ease-out group-hover:scale-110",
+                  step.color,
+                ]}
+              >
+                {step.number}
+              </span>
+
+              {index < startHereSteps.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  class="my-3 w-px grow bg-neutral-300"
+                />
+              )}
+            </div>
+
+            <div class:list={[index < startHereSteps.length - 1 && "pb-14"]}>
+              <h3 class="text-2xl font-medium sm:text-3xl">{step.title}</h3>
+
+              <p class="mt-3 max-w-xl text-lg leading-relaxed text-neutral-700">
+                {step.description}
+              </p>
+
+              <a
+                href={step.href}
+                target={step.external ? "_blank" : undefined}
+                rel={step.external ? "noreferrer" : undefined}
+                class="group/link relative mt-6 inline-flex w-fit items-center gap-2 text-base font-medium text-neutral-950"
+              >
+                <span class="relative">
+                  {step.action}
+                  <span class="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-neutral-950 transition-transform duration-300 ease-out group-hover/link:scale-x-100" />
+                </span>
+
+                <span
+                  aria-hidden="true"
+                  class="transition-transform duration-200 ease-out group-hover/link:translate-x-1"
+                >
+                  →
+                </span>
+
+                {step.external && (
+                  <span class="sr-only"> (opens in new tab)</span>
+                )}
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
