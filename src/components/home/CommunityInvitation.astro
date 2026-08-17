@@ -3,7 +3,7 @@ import { siteLinks } from "../../data/site";
 ---
 
 <section
-  class="border-b border-neutral-950 bg-fuchsia-100 px-6 py-16 text-neutral-950 sm:py-20"
+  class="border-t border-b border-neutral-300 bg-fuchsia-100 px-6 py-16 text-neutral-950 sm:py-20"
 >
   <div
     class="mx-auto flex max-w-5xl flex-col justify-between gap-8 sm:flex-row sm:items-end"
@@ -16,9 +16,12 @@ import { siteLinks } from "../../data/site";
       </p>
 
       <h2
-        class="mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-neutral-950 opacity-100 transition-opacity duration-200 group-hover:opacity-70 sm:text-5xl"
+        class="mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-neutral-950 sm:text-5xl"
       >
-        The lab is open.
+        The lab is open<span
+          class="text-neutral-300 transition-colors duration-300 group-hover:text-neutral-950"
+          >.</span
+        >
       </h2>
     </div>
 

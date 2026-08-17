@@ -5,15 +5,19 @@ import HeroHeading from "./HeroHeading.astro";
 
 <section
   aria-labelledby="home-hero-title"
-  class="relative z-10 overflow-visible bg-neutral-100 px-6 pb-16 pt-20 text-neutral-950 sm:pb-20 sm:pt-24"
+  class="relative z-10 overflow-visible bg-neutral-100 px-6 pb-24 pt-28 text-neutral-950 sm:pb-20 sm:pt-24"
 >
   <div class="mx-auto max-w-3xl text-center">
     <HeroHeading />
+
     <p
-      class="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-neutral-700 sm:text-xl"
+      class="mx-auto mt-10 max-w-md text-lg leading-relaxed text-neutral-700 sm:mt-8 sm:max-w-xl sm:text-xl"
     >
       A space to research, experiment, and publish what we discover together.
     </p>
-    <RegistryExplorer />
+
+    <div class="mt-10 sm:mt-8">
+      <RegistryExplorer />
+    </div>
   </div>
 </section>
