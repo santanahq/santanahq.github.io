@@ -1,33 +1,14 @@
-export interface LabIndexEntry {
-  id: string;
-  href: string;
-  label: string;
-  description: string;
-}
-
-export const labIndexEntries: LabIndexEntry[] = [
+export const labIndexEntries = [
   {
-    id: "01",
-    href: "/research",
-    label: "Research",
-    description: "Questions examined in public",
+    label: "The premise",
+    href: "#the-premise",
   },
   {
-    id: "02",
-    href: "/projects",
-    label: "Projects",
-    description: "Systems built to understand",
+    label: "Ways to begin",
+    href: "#ways-to-begin",
   },
   {
-    id: "03",
-    href: "/writing",
-    label: "Field notes",
-    description: "Observations from the process",
+    label: "Join the lab",
+    href: "#join-the-lab",
   },
-  {
-    id: "04",
-    href: "/rules",
-    label: "Principles",
-    description: "How the lab works",
-  },
-];
+] as const;
