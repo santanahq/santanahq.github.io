@@ -8,9 +8,9 @@ import { labIndexEntries } from "./registry-explorer";
     data-menu-trigger
     aria-expanded="false"
     aria-controls="registry-menu"
-    class="inline-flex items-center gap-3 border border-neutral-300 bg-white px-6 py-4 text-neutral-950 transition-colors duration-150 hover:border-blue-700 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+    class="inline-flex items-center gap-3 border border-neutral-300 bg-white px-6 py-4 text-neutral-950 transition-colors duration-150 hover:border-blue-700 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50"
   >
-    <span>Explore the registry</span>
+    Explore the registry
 
     <svg
       data-menu-chevron
@@ -63,11 +63,7 @@ import { labIndexEntries } from "./registry-explorer";
       "[data-menu-chevron]",
     );
 
-    if (
-      triggerElement === null ||
-      panelElement === null ||
-      chevronElement === null
-    ) {
+    if (!triggerElement || !panelElement || !chevronElement) {
       return;
     }
 
@@ -79,18 +75,21 @@ import { labIndexEntries } from "./registry-explorer";
       trigger.setAttribute("aria-expanded", String(isOpen));
       panel.setAttribute("aria-hidden", String(!isOpen));
       panel.toggleAttribute("inert", !isOpen);
-
       panel.classList.toggle("pointer-events-none", !isOpen);
       panel.classList.toggle("invisible", !isOpen);
       panel.classList.toggle("translate-y-1", !isOpen);
       panel.classList.toggle("opacity-0", !isOpen);
-
       chevron.classList.toggle("rotate-180", isOpen);
     }
 
     trigger.addEventListener("click", () => {
-      const isOpen = trigger.getAttribute("aria-expanded") === "true";
-      setOpen(!isOpen);
+      setOpen(trigger.getAttribute("aria-expanded") !== "true");
+    });
+
+    panel.addEventListener("click", (event) => {
+      if ((event.target as HTMLElement).closest("a")) {
+        setOpen(false);
+      }
     });
 
     document.addEventListener("click", (event) => {

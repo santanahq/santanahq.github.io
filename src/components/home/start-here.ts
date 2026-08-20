@@ -1,4 +1,4 @@
-import { siteLinks } from "../../data/site";
+import { siteLinks } from "../../config/site";
 
 export const startHereSteps = [
   {

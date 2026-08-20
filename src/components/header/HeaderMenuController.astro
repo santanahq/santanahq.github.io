@@ -1,30 +1,43 @@
 <script>
-  const toggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("mobile-nav");
+  const toggleElement =
+    document.querySelector<HTMLButtonElement>("#menu-toggle");
+  const menuElement = document.querySelector<HTMLElement>("#mobile-nav");
 
-  const menuIcon = toggle?.querySelector("[data-menu-icon]");
-  const closeIcon = toggle?.querySelector("[data-close-icon]");
+  if (toggleElement && menuElement) {
+    const toggle = toggleElement;
+    const menu = menuElement;
+    const menuIcon = toggle.querySelector<HTMLElement>("[data-menu-icon]");
+    const closeIcon = toggle.querySelector<HTMLElement>("[data-close-icon]");
 
-  function setMenuOpen(isOpen: boolean) {
-    menu?.classList.toggle("hidden", !isOpen);
+    function isMenuOpen() {
+      return !menu.classList.contains("hidden");
+    }
 
-    toggle?.setAttribute("aria-expanded", String(isOpen));
-    toggle?.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation" : "Open navigation",
-    );
+    function setMenuOpen(isOpen: boolean) {
+      menu.classList.toggle("hidden", !isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation",
+      );
 
-    menuIcon?.classList.toggle("hidden", isOpen);
-    closeIcon?.classList.toggle("hidden", !isOpen);
+      menuIcon?.classList.toggle("hidden", isOpen);
+      closeIcon?.classList.toggle("hidden", !isOpen);
+    }
+
+    toggle.addEventListener("click", () => {
+      setMenuOpen(!isMenuOpen());
+    });
+
+    menu.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
+      link.addEventListener("click", () => setMenuOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && isMenuOpen()) {
+        setMenuOpen(false);
+        toggle.focus();
+      }
+    });
   }
-
-  toggle?.addEventListener("click", () => {
-    const isOpen = menu?.classList.contains("hidden") ?? true;
-
-    setMenuOpen(isOpen);
-  });
-
-  menu?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => setMenuOpen(false));
-  });
 </script>

@@ -1,22 +1,22 @@
 ---
-import type { HeaderNavigationItem } from "./header-navigation";
+import type { NavigationItem } from "../../config/navigation";
 
 interface Props {
-  items: HeaderNavigationItem[];
+  items: readonly Pick<NavigationItem, "label" | "href">[];
 }
 
 const { items } = Astro.props;
 ---
 
 <nav
-  class="ml-10 hidden items-center gap-8 xl:flex"
   aria-label="Main navigation"
+  class="ml-10 hidden items-center gap-8 xl:flex"
 >
   {
     items.map((item) => (
       <a
         href={item.href}
-        class="relative py-2 font-mono text-sm font-bold uppercase tracking-widest text-black transition-opacity duration-200 hover:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+        class="py-2 font-mono text-sm font-bold uppercase tracking-widest text-neutral-950 transition-opacity duration-200 hover:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2"
       >
         {item.label}
       </a>

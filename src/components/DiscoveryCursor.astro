@@ -1,11 +1,12 @@
 <div
   id="cursor-ring"
-  class="pointer-events-none fixed z-999 hidden h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-neutral-950 transition-[width,height] duration-200 md:block"
+  class="pointer-events-none fixed z-50 hidden size-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-neutral-950 transition-transform duration-200"
 >
 </div>
+
 <div
   id="cursor-dot"
-  class="pointer-events-none fixed z-999 hidden h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-950 md:block"
+  class="pointer-events-none fixed z-50 hidden size-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-950"
 >
 </div>
 
@@ -21,46 +22,58 @@
     const ring = ringElement;
     const dot = dotElement;
 
-    let mx = 0;
-    let my = 0;
-    let rx = 0;
-    let ry = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+    let ringX = 0;
+    let ringY = 0;
+    let hasPointerPosition = false;
 
-    ring.classList.remove("hidden");
-    dot.classList.remove("hidden");
+    window.addEventListener("pointermove", (event) => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
 
-    window.addEventListener("mousemove", (event) => {
-      mx = event.clientX;
-      my = event.clientY;
+      dot.style.left = `${mouseX}px`;
+      dot.style.top = `${mouseY}px`;
 
-      dot.style.left = `${mx}px`;
-      dot.style.top = `${my}px`;
+      if (!hasPointerPosition) {
+        ringX = mouseX;
+        ringY = mouseY;
+        ring.style.left = `${ringX}px`;
+        ring.style.top = `${ringY}px`;
+        ring.classList.remove("hidden");
+        dot.classList.remove("hidden");
+        hasPointerPosition = true;
+      }
     });
 
-    function loop() {
-      rx += (mx - rx) * 0.2;
-      ry += (my - ry) * 0.2;
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.2;
+      ringY += (mouseY - ringY) * 0.2;
 
-      ring.style.left = `${rx}px`;
-      ring.style.top = `${ry}px`;
+      ring.style.left = `${ringX}px`;
+      ring.style.top = `${ringY}px`;
 
-      requestAnimationFrame(loop);
+      requestAnimationFrame(animateRing);
     }
 
-    loop();
+    animateRing();
 
-    document
-      .querySelectorAll<HTMLElement>('a, button, [role="button"]')
-      .forEach((element) => {
-        element.addEventListener("mouseenter", () => {
-          ring.style.width = "48px";
-          ring.style.height = "48px";
-        });
+    document.addEventListener("pointerover", (event) => {
+      const target = event.target as Element;
 
-        element.addEventListener("mouseleave", () => {
-          ring.style.width = "28px";
-          ring.style.height = "28px";
-        });
-      });
+      if (target.closest("a, button, [role='button']")) {
+        ring.classList.add("scale-175");
+      }
+    });
+
+    document.addEventListener("pointerout", (event) => {
+      const target = event.target as Element;
+      const relatedTarget = event.relatedTarget as Node | null;
+      const interactiveElement = target.closest("a, button, [role='button']");
+
+      if (interactiveElement && !interactiveElement.contains(relatedTarget)) {
+        ring.classList.remove("scale-175");
+      }
+    });
   }
 </script>

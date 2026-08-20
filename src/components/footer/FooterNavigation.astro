@@ -1,22 +1,23 @@
 ---
 import { Icon } from "astro-icon/components";
-import { footerNavigation } from "./footer-navigation";
+
+import { primaryNavigation } from "../../config/navigation";
 ---
 
 <nav
-  class="flex flex-wrap items-center gap-5 md:col-span-2 lg:col-span-1 lg:justify-center"
   aria-label="Footer navigation"
+  class="flex flex-wrap items-center gap-5 md:col-span-2 lg:col-span-1 lg:justify-center"
 >
   {
-    footerNavigation.map(({ href, label, icon }) => (
+    primaryNavigation.map(({ href, label, icon }) => (
       <a
         href={href}
-        class="group inline-flex items-center gap-2 border-b border-transparent pb-0.5 text-sm text-neutral-500 transition-all duration-200 hover:border-neutral-900 hover:text-neutral-900 focus-visible:border-neutral-900 focus-visible:text-neutral-900 focus-visible:outline-none"
+        class="group inline-flex items-center gap-2 border-b border-transparent pb-0.5 text-sm text-neutral-500 transition-colors duration-200 hover:border-neutral-950 hover:text-neutral-950 focus-visible:border-neutral-950 focus-visible:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2"
       >
         <Icon
           name={icon}
-          class="size-4.25 transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:scale-110"
           aria-hidden="true"
+          class="size-4 transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:scale-110"
         />
         {label}
       </a>

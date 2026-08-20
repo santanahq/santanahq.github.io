@@ -5,31 +5,28 @@ import HeaderMenuController from "./HeaderMenuController.astro";
 import HeaderNewsletter from "./HeaderNewsletter.astro";
 import MenuToggle from "./MenuToggle.astro";
 import MobileNavigation from "./MobileNavigation.astro";
-import { headerNavigation } from "./header-navigation";
+
+import { primaryNavigation } from "../../config/navigation";
 ---
 
 <header
   id="site-header"
-  class="sticky top-0 z-50 bg-white text-black transition-shadow duration-200 border-b border-neutral-200"
+  class="sticky top-0 z-50 border-b border-neutral-200 bg-white text-neutral-950 transition-shadow duration-200"
 >
   <div class="mx-auto flex h-18 max-w-6xl items-center px-5 lg:px-8">
-    <div class="order-1 lg:order-2">
-      <HeaderBrand />
-    </div>
+    <HeaderBrand />
 
-    <div class="hidden lg:order-3 lg:block">
-      <DesktopNavigation items={headerNavigation} />
-    </div>
+    <DesktopNavigation items={primaryNavigation} />
 
-    <div class="ml-auto hidden lg:order-4 lg:flex">
+    <div class="ml-auto hidden lg:flex">
       <HeaderNewsletter />
     </div>
 
-    <div class="order-2 ml-auto lg:hidden">
+    <div class="ml-auto lg:hidden">
       <MenuToggle />
     </div>
 
-    <MobileNavigation items={headerNavigation} />
+    <MobileNavigation items={primaryNavigation} />
   </div>
 
   <HeaderMenuController />

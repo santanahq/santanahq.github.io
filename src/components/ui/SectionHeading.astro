@@ -1,0 +1,34 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  headingId?: string;
+  headingClass: string;
+  dotClass?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  headingId,
+  headingClass,
+  dotClass = "text-neutral-300",
+} = Astro.props;
+---
+
+<div>
+  <p
+    class="font-mono text-xs font-bold uppercase tracking-widest text-neutral-500"
+  >
+    {eyebrow}
+  </p>
+
+  <h2 id={headingId} class:list={["group mt-4", headingClass]}>
+    {title}<span
+      class:list={[
+        dotClass,
+        "transition-colors duration-300 group-hover:text-neutral-950",
+      ]}>.</span
+    >
+  </h2>
+</div>
