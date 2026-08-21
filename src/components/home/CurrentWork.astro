@@ -1,0 +1,70 @@
+---
+import { siteLinks } from "../../config/site";
+---
+
+<section
+  id="featured-note"
+  aria-labelledby="featured-note-title"
+  class="border-b border-neutral-200 bg-white px-6 py-20 text-neutral-950 sm:py-28"
+>
+  <div class="mx-auto max-w-5xl">
+    <p class="font-mono text-xs font-medium tracking-wide text-neutral-400">
+      Open research
+    </p>
+
+    <div
+      class="group/card mt-6 border border-transparent bg-neutral-50 p-8 transition-[background-color,border-color] duration-200 hover:border-neutral-950 hover:bg-white sm:p-10"
+    >
+      <div class="flex items-start justify-between gap-4">
+        <a
+          href="/research"
+          class="group block flex-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-50"
+        >
+          <h2
+            id="featured-note-title"
+            class="max-w-2xl text-3xl font-medium tracking-tight transition-colors duration-200 group-hover:text-neutral-600 sm:text-4xl"
+          >
+            What did Peter Chen get so right that we still draw data this way?
+          </h2>
+        </a>
+
+        <p
+          class="inline-flex shrink-0 items-center gap-2 whitespace-nowrap font-mono text-xs font-medium tracking-wide text-sky-700"
+        >
+          <span aria-hidden="true" class="size-1.5 rounded-full bg-sky-500"
+          ></span>
+          In progress
+        </p>
+      </div>
+
+      <p class="mt-5 max-w-xl leading-relaxed text-neutral-600">
+        Sources, questions, and experiments around Peter Chen’s original model.
+      </p>
+
+      <div class="mt-8 border-t border-neutral-200 pt-5">
+        <a
+          href={siteLinks.discord}
+          target="_blank"
+          rel="noreferrer"
+          class="group inline-flex items-center gap-3 text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-50"
+        >
+          <span class="relative">
+            Join the lab to follow this research
+            <span
+              class="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-neutral-950 transition-transform duration-300 ease-out group-hover:scale-x-100"
+            ></span>
+          </span>
+
+          <span
+            aria-hidden="true"
+            class="transition-transform duration-200 ease-out group-hover:translate-x-1"
+          >
+            →
+          </span>
+
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

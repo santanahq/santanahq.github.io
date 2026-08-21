@@ -6,21 +6,21 @@ const premisePillars = [
     title: "Questions",
     description: "Problems worth understanding.",
     markerClass: "bg-emerald-600",
-    titleClass: "text-emerald-600",
+    titleClass: "text-emerald-700",
     hoverClass: "md:hover:border-emerald-600",
   },
   {
     title: "Experiments",
     description: "Tests, prototypes, and failed attempts.",
     markerClass: "bg-sky-600",
-    titleClass: "text-sky-600",
+    titleClass: "text-sky-700",
     hoverClass: "md:hover:border-sky-600",
   },
   {
     title: "Records",
     description: "Notes that make later work easier.",
     markerClass: "bg-violet-600",
-    titleClass: "text-violet-600",
+    titleClass: "text-violet-700",
     hoverClass: "md:hover:border-violet-600",
   },
 ] as const;
@@ -29,7 +29,7 @@ const premisePillars = [
 <section
   id="the-premise"
   aria-labelledby="lab-premise-title"
-  class="border-y border-neutral-200 bg-white px-6 py-16 text-neutral-950 sm:py-20"
+  class="border-b border-sky-100 bg-sky-50 px-6 py-16 text-neutral-950 sm:py-20"
 >
   <div
     class="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-20"
@@ -38,7 +38,8 @@ const premisePillars = [
       eyebrow="The premise"
       title="Knowledge should leave a trace"
       headingId="lab-premise-title"
-      headingClass="inline-block text-3xl font-medium tracking-tight sm:text-4xl lg:text-5xl"
+      headingClass="inline-block max-w-lg text-3xl font-medium tracking-tight sm:text-4xl lg:text-5xl"
+      dotClass="text-sky-200"
     />
 
     <div class="max-w-2xl">
@@ -50,7 +51,7 @@ const premisePillars = [
       </p>
 
       <div
-        class="mt-8 grid gap-8 border-t border-neutral-300 pt-6 sm:mt-10 md:grid-cols-3 md:gap-6"
+        class="mt-8 grid gap-8 border-t border-sky-200 pt-6 sm:mt-10 md:grid-cols-3 md:gap-6"
       >
         {
           premisePillars.map((pillar) => (
